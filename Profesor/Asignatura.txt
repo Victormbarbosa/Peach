@@ -1,0 +1,2 @@
+Algoritmia 1;
+Algoritmia 2;

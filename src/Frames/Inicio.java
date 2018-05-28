@@ -61,7 +61,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 140, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Entypo_e722(1)_256.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Entypo_e722(1)_256.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 260, 160));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

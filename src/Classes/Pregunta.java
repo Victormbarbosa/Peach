@@ -13,9 +13,9 @@ public class Pregunta {
 
     String contenido;
     Tema tema;
-    Nivel nivel;
+    int nivel;
 
-    public Pregunta(String contenido, Nivel nivel) {
+    public Pregunta(String contenido, int nivel) {
         this.contenido = contenido;
         this.nivel = nivel;
     }

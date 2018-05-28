@@ -30,6 +30,7 @@ public class Peach extends javax.swing.JFrame {
 
         iniciar = new javax.swing.JButton();
         registrarse = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -40,7 +41,7 @@ public class Peach extends javax.swing.JFrame {
                 iniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 172, -1, -1));
+        getContentPane().add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 30));
 
         registrarse.setText("registrarse");
         registrarse.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +49,10 @@ public class Peach extends javax.swing.JFrame {
                 registrarseActionPerformed(evt);
             }
         });
-        getContentPane().add(registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 172, -1, -1));
+        getContentPane().add(registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 110, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 430));
 
         pack();
         setLocationRelativeTo(null);
@@ -105,6 +109,7 @@ public class Peach extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton iniciar;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton registrarse;
     // End of variables declaration//GEN-END:variables
 }

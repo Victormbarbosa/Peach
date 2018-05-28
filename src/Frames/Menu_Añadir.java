@@ -16,7 +16,7 @@ public class Menu_Añadir extends javax.swing.JFrame {
      */
     public Menu_Añadir() {
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -53,6 +53,11 @@ public class Menu_Añadir extends javax.swing.JFrame {
         jLabel1.setText("Agregar");
 
         jButton3.setText("Atras");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,16 +93,23 @@ public class Menu_Añadir extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- AñadirInformacion ad = new AñadirInformacion();
+        AñadirInformacion ad = new AñadirInformacion();
         ad.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-Add_Asignatura_Tema ad = new Add_Asignatura_Tema();
+        Add_Asignatura_Tema ad = new Add_Asignatura_Tema();
         ad.setVisible(true);
         dispose();           // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        InterfazPrincipal ip = new InterfazPrincipal ();
+        ip.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,6 +36,8 @@ public class Inicio extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,18 +48,24 @@ public class Inicio extends javax.swing.JFrame {
                 iniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        getContentPane().add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
         contrasena.setText("¿Olvido su contraseña?");
-        getContentPane().add(contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 150, -1));
-        getContentPane().add(nickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 160, -1));
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 160, -1));
+        getContentPane().add(contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 190, -1));
+        getContentPane().add(nickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 160, -1));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 160, -1));
 
-        jLabel1.setText("Nickname");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+        jLabel1.setText("Nombre de Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 140, 20));
 
         jLabel2.setText("Contraseña");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 140, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Entypo_e722(1)_256.png")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 260, 160));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 490));
 
         pack();
         setLocationRelativeTo(null);
@@ -110,6 +118,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton iniciar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nickname;
     private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables

@@ -16,6 +16,7 @@ public class Ver_Preguntas extends javax.swing.JFrame {
      */
     public Ver_Preguntas() {
         initComponents();
+        
     }
 
     /**

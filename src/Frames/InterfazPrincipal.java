@@ -98,9 +98,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        /*Generar_examen g = new Generar_examen();
+        Generar_examen g = new Generar_examen();
         g.setVisible(true);
-        dispose();*/
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

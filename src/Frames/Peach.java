@@ -5,6 +5,9 @@
  */
 package Frames;
 
+import Frames.Inicio;
+import Frames.Registrarse;
+
 /**
  *
  * @author danie
@@ -30,7 +33,7 @@ public class Peach extends javax.swing.JFrame {
 
         iniciar = new javax.swing.JButton();
         registrarse = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -41,7 +44,7 @@ public class Peach extends javax.swing.JFrame {
                 iniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 110, 30));
+        getContentPane().add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 190, 40));
 
         registrarse.setText("registrarse");
         registrarse.addActionListener(new java.awt.event.ActionListener() {
@@ -49,10 +52,11 @@ public class Peach extends javax.swing.JFrame {
                 registrarseActionPerformed(evt);
             }
         });
-        getContentPane().add(registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 110, 30));
+        getContentPane().add(registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 283, 190, 40));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 430));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel1.setText("Bienvenido/a a Peach");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 470, 130));
 
         pack();
         setLocationRelativeTo(null);
@@ -109,7 +113,7 @@ public class Peach extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton iniciar;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton registrarse;
     // End of variables declaration//GEN-END:variables
 }

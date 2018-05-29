@@ -66,6 +66,20 @@ public class Metodos {
         bw.close();
         fw.close();
     }
+    
+      public void comboBox(String archivo, JComboBox combo) throws FileNotFoundException, IOException {
+        File F = new File(archivo);
+        FileReader fr = new FileReader(F);
+        BufferedReader br = new BufferedReader(fr);
+        String n;
+        String line = br.readLine();
+        while (line != null) {
+            String[] parts = line.split(";");
+            String item = parts [0];
+            combo.addItem(item);
+            line = br.readLine();
+        }
+    }
 
     public String LeerArchivo(String Nombre) throws IOException {
 

@@ -6,6 +6,7 @@
 package Frames;
 
 import Classes.Metodos;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,19 +23,19 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
      */
     public Add_Asignatura_Tema() {
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         try {
             AsigInicio();
         } catch (IOException ex) {
             Logger.getLogger(Add_Asignatura_Tema.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void AsigInicio() throws IOException{
+
+    public void AsigInicio() throws IOException {
         Metodos e = new Metodos();
         int h = 0;
         try {
-            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", asignatura, h);
+            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", ComboAsignatura, h);
             if (h < 1) {
                 JOptionPane.showMessageDialog(null, "No hay Asignaturas, deberia agregar alguna.");
             }
@@ -42,7 +43,7 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
             Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,11 +55,11 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        asignatura = new javax.swing.JComboBox<>();
+        ComboAsignatura = new javax.swing.JComboBox<>();
         ButAsig = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         ButtTemas = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        AsigText = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         check1 = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -68,7 +69,7 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         DesB = new javax.swing.JTextArea();
         check2 = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        TemaText = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,13 +79,13 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         jLabel1.setText("Seleccion la Asginatura de la cual hace parte el tema");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 320, 28));
 
-        asignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
-        asignatura.addActionListener(new java.awt.event.ActionListener() {
+        ComboAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        ComboAsignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asignaturaActionPerformed(evt);
+                ComboAsignaturaActionPerformed(evt);
             }
         });
-        jPanel1.add(asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 170, 36));
+        jPanel1.add(ComboAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 170, 36));
 
         ButAsig.setText("Agregar +");
         ButAsig.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +106,7 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ButtTemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 650, 100, 30));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 210, 30));
+        jPanel1.add(AsigText, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 210, 30));
 
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 90, 30));
@@ -156,7 +157,7 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
 
         jLabel5.setText("Nombre");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 90, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 210, 30));
+        jPanel1.add(TemaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 210, 30));
 
         jButton3.setText("Atras");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -175,66 +176,59 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void asignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignaturaActionPerformed
-        String Asignatura = (String) asignatura.getSelectedItem();
-        Metodos e = new Metodos();
-        asignatura.removeAllItems();
-        asignatura.addItem("...");
-        int h = 0;
-        try {
+    private void ComboAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboAsignaturaActionPerformed
 
-            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", asignatura, h);
-            if (h < 1) {
-                JOptionPane.showMessageDialog(null, "La Asignatura que ha seleccionado no tiene Temas, sí desea usar esta asignatura es necesario que añada temas.");
-
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_asignaturaActionPerformed
+    }//GEN-LAST:event_ComboAsignaturaActionPerformed
 
     private void ButAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAsigActionPerformed
-        /* String Asig = JOptionPane.showInputDialog(null, "Digite la Asignatura que desea agregar.");
-        Metodos e = new Metodos();
-        String x = "Profesor/Asignatura.txt";
-        String temp = null;
-        try {
-            temp = e.concatenar(x);
-            e.guardar(temp, x, Asig + ";");
-            ComboAsignatura.addItem(Asig);
-            File carpeta = new File("Profesor/" + Asig);
-            carpeta.mkdirs();
-            File fichero = new File("Profesor/" + Asig + "/Temas.txt");
-            fichero.createNewFile();
-        } catch (IOException ex) {
-            Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        String Asig = AsigText.getText();
+        if (!Asig.equals("")) {
+            Metodos e = new Metodos();
+            String x = "Profesor/Asignatura.txt";
+            String temp = null;
+            try {
+                temp = e.concatenar(x);
+                e.guardar(temp, x, Asig + ";" + DesA.getText() + ";");
+                ComboAsignatura.addItem(Asig);
+                File carpeta = new File("Profesor/" + Asig);
+                carpeta.mkdirs();
+                File fichero = new File("Profesor/" + Asig + "/Temas.txt");
+                fichero.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha escrito un nombre para la asignatura.");
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_ButAsigActionPerformed
 
     private void ButtTemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtTemasActionPerformed
-        /*String tema = JOptionPane.showInputDialog(null, "Digite el Tema que desea agregar.");
+        String tema = TemaText.getText();
         Metodos e = new Metodos();
         String r = (String) ComboAsignatura.getSelectedItem();
         String x = "Profesor/" + r + "/Temas.txt";
         String temp = null;
         try {
             temp = e.concatenar(x);
-            e.guardar(temp, x, tema + ";");
-            ComboTemas.addItem(tema);
+            e.guardar(temp, x, tema + ";" + DesB.getText() + ";");
             File carpeta = new File("Profesor/" + r + "/" + tema);
             carpeta.mkdirs();
-            File fichero = new File("Profesor/" + r + "/" + tema + "/Preguntas.txt");
-            fichero.createNewFile();
+            File f1 = new File("Profesor/" + r + "/" + tema + "/Preguntas_1.txt");
+            f1.createNewFile();
+            File f2 = new File("Profesor/" + r + "/" + tema + "/Preguntas_2.txt");
+            f2.createNewFile();
+            File f3 = new File("Profesor/" + r + "/" + tema + "/Preguntas_3.txt");
+            f3.createNewFile();
         } catch (IOException ex) {
             Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
         }
-         */
+         
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtTemasActionPerformed
 
     private void check1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_check1MouseClicked
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_check1MouseClicked
 
@@ -243,19 +237,19 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     }//GEN-LAST:event_check2MouseClicked
 
     private void check1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check1ActionPerformed
-    if(check1.isSelected()==true){
-        DesA.setEditable(true);
-    }else{
-        DesA.setEditable(false);
-    }
+        if (check1.isSelected() == true) {
+            DesA.setEditable(true);
+        } else {
+            DesA.setEditable(false);
+        }
     }//GEN-LAST:event_check1ActionPerformed
 
     private void check2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check2ActionPerformed
-    if(check2.isSelected()==true){
-        DesB.setEditable(true);
-    }else{
-        DesB.setEditable(false);
-    }
+        if (check2.isSelected() == true) {
+            DesB.setEditable(true);
+        } else {
+            DesB.setEditable(false);
+        }
     }//GEN-LAST:event_check2ActionPerformed
 
     /**
@@ -294,11 +288,13 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AsigText;
     private javax.swing.JButton ButAsig;
     private javax.swing.JButton ButtTemas;
+    private javax.swing.JComboBox<String> ComboAsignatura;
     private javax.swing.JTextArea DesA;
     private javax.swing.JTextArea DesB;
-    private javax.swing.JComboBox<String> asignatura;
+    private javax.swing.JTextField TemaText;
     private javax.swing.JCheckBox check1;
     private javax.swing.JCheckBox check2;
     private javax.swing.JButton jButton3;
@@ -310,7 +306,5 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

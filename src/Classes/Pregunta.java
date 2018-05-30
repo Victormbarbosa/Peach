@@ -19,10 +19,4 @@ public class Pregunta {
         this.nivel = nivel;
     }
 
-    
-
-    public String getContenido() {
-        return contenido;
-    }
-
 }

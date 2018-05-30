@@ -119,7 +119,7 @@ public class AñadirInformacion extends javax.swing.JFrame {
         jor = (String) ComboDificultad.getSelectedItem();
         String total = jor + ";" + nom + ";";
         String temp = null;
-        String x = "Profesor/" + Asignatura + "/" + tema + "/Preguntas.txt";
+        String x = "Profesor/" + Asignatura + "/" + tema + "/Preguntas_"+jor+".txt";
         if (Asignatura.equals("...")) {
             JOptionPane.showMessageDialog(null, "No ha Selccionado ninguna Asignatura.");
         } else {

@@ -19,50 +19,48 @@ import java.util.logging.Logger;
  * @author DORIS SALCEDO
  */
 public class Asignatura {
-  String Nombre;  
-  ArrayList <Tema> temas = new ArrayList();
+
+    String Nombre;
+    ArrayList<Tema> temas = new ArrayList();
 
     public Asignatura(String Nombre) {
-        this.Nombre=Nombre;
-      try {
-          setTemas();
-      } catch (IOException ex) {
-          Logger.getLogger(Asignatura.class.getName()).log(Level.SEVERE, null, ex);
-      }
-        
+        this.Nombre = Nombre;
+        try {
+            setTemas();
+        } catch (IOException ex) {
+            Logger.getLogger(Asignatura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    
+
     public void setTemas() throws FileNotFoundException, IOException {
-        
-        File f = new File("Profesor/"+Nombre+"/Temas.txt");
+
+        File f = new File("Profesor/" + Nombre + "/Temas.txt");
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
-        String Nombre;
         Metodos e = new Metodos();
-        int h =0;
+        int h = 0;
         while (br.ready()) {
-            Nombre=e.Desco(br.readLine(), 1);
-            System.out.println(Nombre);    
-            addTema(new Tema (Nombre, this));
+            String nombre = br.readLine();
+            if (nombre != null) {
+                System.out.println(nombre);
+                nombre = e.Desco(nombre, 1);
+                addTema(new Tema(nombre, this));
+            }
         }
-        
     }
-    
-    public void addTema (Tema t){
+
+    public void addTema(Tema t) {
         t.addAsignatura(this);
         temas.add(t);
     }
-    
-    public Tema getTema (){
+
+    public Tema getTema() {
         Tema tema = null;
         for (Tema t : temas) {
-            
+
         }
         return tema;
     }
-    
-    
-    
-    
-    
+
 }

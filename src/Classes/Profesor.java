@@ -29,28 +29,26 @@ public class Profesor {
             Logger.getLogger(Profesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
+
     public void setAsignaturas() throws FileNotFoundException, IOException {
-        
+
         File f = new File("Profesor/Asignatura.txt");
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
-        String Nombre;
         Metodos e = new Metodos();
-        int h =0;
+        int h = 0;
         while (br.ready()) {
-            Nombre=e.Desco(br.readLine(), 1);
-            System.out.println(Nombre);    
-            AddAsignatura(new Asignatura(Nombre));
+            String Nombre = br.readLine();
+            if (Nombre != null) {
+                Nombre = e.Desco(Nombre, 1);
+                System.out.println("" + Nombre);
+                AddAsignatura(new Asignatura(Nombre));
+            }
         }
-        
     }
-    
-    public void AddAsignatura(Asignatura asigna){
+
+    public void AddAsignatura(Asignatura asigna) {
         Asignaturas.add(asigna);
     }
- 
 
 }

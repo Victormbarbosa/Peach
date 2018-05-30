@@ -23,40 +23,63 @@ public class Tema {
     String Nombre;
     Asignatura asignatura;
     ArrayList<Pregunta> preguntas_1 = new ArrayList();
+    ArrayList<Pregunta> preguntas_2 = new ArrayList();
+    ArrayList<Pregunta> preguntas_3 = new ArrayList();
 
     public Tema(String titulo, Asignatura asig) {
         this.Nombre = titulo;
-        this.asignatura=asig;
+        this.asignatura = asig;
         try {
-            setPreguntas();
+            setPreguntas(1);
+            setPreguntas(2);
+            setPreguntas(3);
         } catch (IOException ex) {
             Logger.getLogger(Tema.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void setPreguntas() throws FileNotFoundException, IOException {
-        System.out.println(""+asignatura.Nombre);
-        File f = new File("Profesor/" + asignatura.Nombre +"/"+Nombre+"/Preguntas.txt");
+    public void setPreguntas(int r) throws FileNotFoundException, IOException {
+        File f = new File("Profesor/" + asignatura.Nombre + "/" + Nombre + "/Preguntas_" + r + ".txt");
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
         Metodos e = new Metodos();
         int h = 0;
+        
         while (br.ready()) {
-            String contenido = e.Desco(br.readLine(), 2);
-            /*int Dificultad = Integer.parseInt( e.Desco(br.readLine(), 1));*/
-            System.out.println(contenido);
-            addPregunta(new Pregunta(contenido, 2));
+            String contenido = br.readLine();
+            if (contenido != null) {
+                String info = e.Desco(contenido, 2);
+                int Dificultad = Integer.parseInt(e.Desco(contenido, 1));
+                System.out.println(info+"  "+ Dificultad);
+                switch (Dificultad) {
+                    case 1:
+                        addPregunta_1(new Pregunta(contenido, 2));
+                        break;
+                    case 2:
+                        addPregunta_2(new Pregunta(contenido, 2));
+                        break;
+                    case 3:
+                        addPregunta_3(new Pregunta(contenido, 2));
+                        break;
+                }
+            }
         }
-
     }
-    
-    public void addAsignatura(Asignatura asig){
+
+    public void addAsignatura(Asignatura asig) {
         asignatura = asig;
     }
-    
-    private void addPregunta(Pregunta e) {
+
+    private void addPregunta_1(Pregunta e) {
         preguntas_1.add(e);
     }
 
-    
+    private void addPregunta_2(Pregunta e) {
+        preguntas_2.add(e);
+    }
+
+    private void addPregunta_3(Pregunta e) {
+        preguntas_3.add(e);
+    }
+
 }

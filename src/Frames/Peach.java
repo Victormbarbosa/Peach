@@ -5,6 +5,7 @@
  */
 package Frames;
 
+import Classes.Profesor;
 import Frames.Inicio;
 import Frames.Registrarse;
 
@@ -14,9 +15,7 @@ import Frames.Registrarse;
  */
 public class Peach extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Peach
-     */
+    Profesor profesor;
     public Peach() {
         initComponents();
         this.setLocationRelativeTo(null);

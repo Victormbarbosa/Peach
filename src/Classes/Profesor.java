@@ -5,30 +5,48 @@
  */
 package Classes;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
  *
  * @author DORIS SALCEDO
  */
-public class Profesor extends Carpeta{
-//    File datosPersonales;
-//    ArrayList <Materia> materias = new ArrayList();
-//
-//    public Profesor(String titulo) {
-//        super(titulo);
-//        this.materias = new ArrayList();
-//    }
-//    
-//    public Materia getMateria(String nombre){
-//        Materia materia = null;
-//        for (Materia m: materias) {
-//            if (m.titulo.equals(nombre)) {
-//                materia = m;
-//            }
-//        }
-//        return materia;
-//    }
+public class Profesor {
+
+    ArrayList<Asignatura> Asignaturas = new ArrayList();
+
+    public Profesor() {
+       
+        Asignatura asig = new Asignatura();
+        
+        
+        
+        
+        
+    }
     
+    
+    
+    public void setAsignaturas() throws FileNotFoundException, IOException {
+        File f = new File("Profesor/Asignatura.txt");
+        FileReader fr = new FileReader(f);
+        BufferedReader br = new BufferedReader(fr);
+        String g;
+        
+       /* while (br.ready()) {
+            g = br.readLine();  
+            Metodos p = new Metodos();
+            String h = p.Desco(g, 1);
+            Asignaturas.add(h);
+            h2=h2+1;
+        }*/
+    }
+
+ 
+
 }

@@ -5,6 +5,12 @@
  */
 package Frames;
 
+import Classes.Metodos;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -17,8 +23,9 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     public Add_Asignatura_Tema() {
         initComponents();
          this.setLocationRelativeTo(null);
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +37,7 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        ComboAsignatura = new javax.swing.JComboBox<>();
+        ComboTemas = new javax.swing.JComboBox<>();
         ButAsig = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         ButtTemas = new javax.swing.JButton();
@@ -54,13 +61,13 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         jLabel1.setText("Seleccion la Asginatura de la cual hace parte el tema");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 320, 28));
 
-        ComboAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
-        ComboAsignatura.addActionListener(new java.awt.event.ActionListener() {
+        ComboTemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        ComboTemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboAsignaturaActionPerformed(evt);
+                ComboTemasActionPerformed(evt);
             }
         });
-        jPanel1.add(ComboAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 170, 36));
+        jPanel1.add(ComboTemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 170, 36));
 
         ButAsig.setText("Agregar +");
         ButAsig.addActionListener(new java.awt.event.ActionListener() {
@@ -139,23 +146,23 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ComboAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboAsignaturaActionPerformed
-        /* String Asignatura = (String) ComboAsignatura.getSelectedItem();
+    private void ComboTemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTemasActionPerformed
+        String Asignatura = (String) ComboTemas.getSelectedItem();
         Metodos e = new Metodos();
         ComboTemas.removeAllItems();
         ComboTemas.addItem("...");
         int h = 0;
         try {
 
-            h = e.Generador_de_Combobox("Profesor/" + Asignatura + "/Temas.txt", ComboTemas, h);
+            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", ComboTemas, h);
             if (h < 1) {
                 JOptionPane.showMessageDialog(null, "La Asignatura que ha seleccionado no tiene Temas, sí desea usar esta asignatura es necesario que añada temas.");
 
             }
         } catch (IOException ex) {
             Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    }//GEN-LAST:event_ComboAsignaturaActionPerformed
+        }
+    }//GEN-LAST:event_ComboTemasActionPerformed
 
     private void ButAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAsigActionPerformed
         /* String Asig = JOptionPane.showInputDialog(null, "Digite la Asignatura que desea agregar.");
@@ -244,7 +251,7 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButAsig;
     private javax.swing.JButton ButtTemas;
-    private javax.swing.JComboBox<String> ComboAsignatura;
+    private javax.swing.JComboBox<String> ComboTemas;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;

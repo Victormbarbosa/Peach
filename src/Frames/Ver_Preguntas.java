@@ -27,10 +27,27 @@ public class Ver_Preguntas extends javax.swing.JFrame {
     public Ver_Preguntas() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try {
+            AsigInicio();
+        } catch (IOException ex) {
+            Logger.getLogger(Ver_Preguntas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     File A;
-    
+     public void AsigInicio() throws IOException{
+        Metodos e = new Metodos();
+        int h = 0;
+        try {
+            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", asignatura, h);
+            if (h < 1) {
+                JOptionPane.showMessageDialog(null, "No hay Asignaturas, deberia agregar alguna.");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void Mostrar(String S){
         try {
             A = new File(S);
@@ -99,6 +116,7 @@ public class Ver_Preguntas extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 290, 200, -1));
 
+        asignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
         asignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 asignaturaActionPerformed(evt);
@@ -106,10 +124,18 @@ public class Ver_Preguntas extends javax.swing.JFrame {
         });
         getContentPane().add(asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 150, -1));
 
+        asign.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
         getContentPane().add(asign, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 140, -1));
 
+        tema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
         getContentPane().add(tema, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 140, -1));
 
+        dificultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        dificultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dificultadActionPerformed(evt);
+            }
+        });
         getContentPane().add(dificultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 140, -1));
 
         verAsignatura.setText("Ver Asignatura");
@@ -172,6 +198,10 @@ public class Ver_Preguntas extends javax.swing.JFrame {
             Logger.getLogger(Ver_Preguntas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_asignaturaActionPerformed
+
+    private void dificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dificultadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dificultadActionPerformed
 
     /**
      * @param args the command line arguments

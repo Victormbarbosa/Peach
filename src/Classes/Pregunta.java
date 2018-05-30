@@ -12,7 +12,6 @@ package Classes;
 public class Pregunta {
 
     String contenido;
-    Tema tema;
     int nivel;
 
     public Pregunta(String contenido, int nivel) {

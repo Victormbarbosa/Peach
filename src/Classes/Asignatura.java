@@ -5,7 +5,14 @@
  */
 package Classes;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,13 +24,32 @@ public class Asignatura {
 
     public Asignatura(String Nombre) {
         this.Nombre=Nombre;
+      try {
+          setTemas();
+      } catch (IOException ex) {
+          Logger.getLogger(Asignatura.class.getName()).log(Level.SEVERE, null, ex);
+      }
+        
     }
-
-    Asignatura() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public void setTemas() throws FileNotFoundException, IOException {
+        
+        File f = new File("Profesor/"+Nombre+"/Temas.txt");
+        FileReader fr = new FileReader(f);
+        BufferedReader br = new BufferedReader(fr);
+        String Nombre;
+        Metodos e = new Metodos();
+        int h =0;
+        while (br.ready()) {
+            Nombre=e.Desco(br.readLine(), 1);
+            System.out.println(Nombre);    
+            addTema(new Tema (Nombre, this));
+        }
+        
     }
     
     public void addTema (Tema t){
+        t.addAsignatura(this);
         temas.add(t);
     }
     

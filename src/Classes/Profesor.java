@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,32 +23,34 @@ public class Profesor {
     ArrayList<Asignatura> Asignaturas = new ArrayList();
 
     public Profesor() {
-       
-        Asignatura asig = new Asignatura();
-        
-        
-        
-        
-        
+        try {
+            setAsignaturas();
+        } catch (IOException ex) {
+            Logger.getLogger(Profesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
     
     public void setAsignaturas() throws FileNotFoundException, IOException {
+        
         File f = new File("Profesor/Asignatura.txt");
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
-        String g;
+        String Nombre;
+        Metodos e = new Metodos();
+        int h =0;
+        while (br.ready()) {
+            Nombre=e.Desco(br.readLine(), 1);
+            System.out.println(Nombre);    
+            AddAsignatura(new Asignatura(Nombre));
+        }
         
-       /* while (br.ready()) {
-            g = br.readLine();  
-            Metodos p = new Metodos();
-            String h = p.Desco(g, 1);
-            Asignaturas.add(h);
-            h2=h2+1;
-        }*/
     }
-
+    
+    public void AddAsignatura(Asignatura asigna){
+        Asignaturas.add(asigna);
+    }
  
 
 }

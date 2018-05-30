@@ -32,11 +32,12 @@ public class Ver_Preguntas extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Ver_Preguntas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     File A;
-     public void AsigInicio() throws IOException{
+
+    public void AsigInicio() throws IOException {
         Metodos e = new Metodos();
         int h = 0;
         try {
@@ -48,7 +49,8 @@ public class Ver_Preguntas extends javax.swing.JFrame {
             Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void Mostrar(String S){
+
+    private void Mostrar(String S) {
         try {
             A = new File(S);
             FileReader fr = new FileReader(A);
@@ -56,8 +58,8 @@ public class Ver_Preguntas extends javax.swing.JFrame {
             String n;
             String line = br.readLine();
             ver.setText(null);
-            while ( line!= null) {
-                ver.append(line+"\n");
+            while (line != null) {
+                ver.append(line + "\n");
                 line = br.readLine();
             }
             br.close();
@@ -66,9 +68,7 @@ public class Ver_Preguntas extends javax.swing.JFrame {
             JOptionPane.showInternalMessageDialog(null, "Error");
         }
     }
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -180,9 +180,9 @@ public class Ver_Preguntas extends javax.swing.JFrame {
     private void verTemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTemasActionPerformed
         // TODO add your handling code here:
         String Asignatura = (String) asignatura.getSelectedItem();
-        String direccion = "Profesor/"+ Asignatura + "/Temas.txt";
+        String direccion = "Profesor/" + Asignatura + "/Temas.txt";
         Mostrar(direccion);
-        
+
     }//GEN-LAST:event_verTemasActionPerformed
 
     private void verPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPreguntasActionPerformed

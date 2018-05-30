@@ -19,6 +19,7 @@ public class Peach extends javax.swing.JFrame {
     public Peach() {
         initComponents();
         this.setLocationRelativeTo(null);
+        profesor = new Profesor();
     }
 
     /**

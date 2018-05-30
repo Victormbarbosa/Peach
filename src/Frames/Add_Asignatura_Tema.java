@@ -23,7 +23,24 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     public Add_Asignatura_Tema() {
         initComponents();
          this.setLocationRelativeTo(null);
-        
+        try {
+            AsigInicio();
+        } catch (IOException ex) {
+            Logger.getLogger(Add_Asignatura_Tema.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void AsigInicio() throws IOException{
+        Metodos e = new Metodos();
+        int h = 0;
+        try {
+            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", asignatura, h);
+            if (h < 1) {
+                JOptionPane.showMessageDialog(null, "No hay Asignaturas, deberia agregar alguna.");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -37,19 +54,19 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        ComboTemas = new javax.swing.JComboBox<>();
+        asignatura = new javax.swing.JComboBox<>();
         ButAsig = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         ButtTemas = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        check1 = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        DesA = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        DesB = new javax.swing.JTextArea();
+        check2 = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -61,13 +78,13 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         jLabel1.setText("Seleccion la Asginatura de la cual hace parte el tema");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 320, 28));
 
-        ComboTemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
-        ComboTemas.addActionListener(new java.awt.event.ActionListener() {
+        asignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        asignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboTemasActionPerformed(evt);
+                asignaturaActionPerformed(evt);
             }
         });
-        jPanel1.add(ComboTemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 170, 36));
+        jPanel1.add(asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 170, 36));
 
         ButAsig.setText("Agregar +");
         ButAsig.addActionListener(new java.awt.event.ActionListener() {
@@ -93,17 +110,23 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 90, 30));
 
-        jCheckBox1.setText("Agregar Descripcion");
-        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+        check1.setText("Agregar Descripcion");
+        check1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox1MouseClicked(evt);
+                check1MouseClicked(evt);
             }
         });
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        check1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(check1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        DesA.setEditable(false);
+        DesA.setColumns(20);
+        DesA.setRows(5);
+        jScrollPane1.setViewportView(DesA);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 310, -1));
 
@@ -111,19 +134,25 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 310, 28));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        DesB.setEditable(false);
+        DesB.setColumns(20);
+        DesB.setRows(5);
+        jScrollPane2.setViewportView(DesB);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 310, -1));
 
-        jCheckBox2.setText("Agregar Descripcion");
-        jCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+        check2.setText("Agregar Descripcion");
+        check2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox2MouseClicked(evt);
+                check2MouseClicked(evt);
             }
         });
-        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+        check2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(check2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
 
         jLabel5.setText("Nombre");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 90, 30));
@@ -146,15 +175,15 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ComboTemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTemasActionPerformed
-        String Asignatura = (String) ComboTemas.getSelectedItem();
+    private void asignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignaturaActionPerformed
+        String Asignatura = (String) asignatura.getSelectedItem();
         Metodos e = new Metodos();
-        ComboTemas.removeAllItems();
-        ComboTemas.addItem("...");
+        asignatura.removeAllItems();
+        asignatura.addItem("...");
         int h = 0;
         try {
 
-            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", ComboTemas, h);
+            h = e.Generador_de_Combobox("Profesor/Asignatura.txt", asignatura, h);
             if (h < 1) {
                 JOptionPane.showMessageDialog(null, "La Asignatura que ha seleccionado no tiene Temas, sí desea usar esta asignatura es necesario que añada temas.");
 
@@ -162,7 +191,7 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(AñadirInformacion.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_ComboTemasActionPerformed
+    }//GEN-LAST:event_asignaturaActionPerformed
 
     private void ButAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAsigActionPerformed
         /* String Asig = JOptionPane.showInputDialog(null, "Digite la Asignatura que desea agregar.");
@@ -204,14 +233,30 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtTemasActionPerformed
 
-    private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
-
+    private void check1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_check1MouseClicked
+        
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1MouseClicked
+    }//GEN-LAST:event_check1MouseClicked
 
-    private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
+    private void check2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_check2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2MouseClicked
+    }//GEN-LAST:event_check2MouseClicked
+
+    private void check1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check1ActionPerformed
+    if(check1.isSelected()==true){
+        DesA.setEditable(true);
+    }else{
+        DesA.setEditable(false);
+    }
+    }//GEN-LAST:event_check1ActionPerformed
+
+    private void check2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check2ActionPerformed
+    if(check2.isSelected()==true){
+        DesB.setEditable(true);
+    }else{
+        DesB.setEditable(false);
+    }
+    }//GEN-LAST:event_check2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,10 +296,12 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButAsig;
     private javax.swing.JButton ButtTemas;
-    private javax.swing.JComboBox<String> ComboTemas;
+    private javax.swing.JTextArea DesA;
+    private javax.swing.JTextArea DesB;
+    private javax.swing.JComboBox<String> asignatura;
+    private javax.swing.JCheckBox check1;
+    private javax.swing.JCheckBox check2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -263,8 +310,6 @@ public class Add_Asignatura_Tema extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
